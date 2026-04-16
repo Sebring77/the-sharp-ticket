@@ -10,12 +10,14 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-sharp-dark/95 backdrop-blur-sm border-b border-sharp-border">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex flex-col leading-none">
-          <span className="text-xs font-semibold tracking-[0.2em] text-white/60 uppercase">The</span>
-          <span className="text-2xl font-black tracking-tight text-sharp-green glow-green" style={{ fontFamily: 'Oswald, sans-serif' }}>
-            SHARP TICKET
-          </span>
-          <span className="text-[9px] font-medium tracking-[0.25em] text-sharp-gold uppercase">Where Smart Money Talks</span>
+        <Link href="/" className="flex items-center">
+          <div style={{ height: '48px', overflow: 'hidden' }}>
+            <img
+              src="/logo.jpg"
+              alt="The Sharp Ticket — Where Smart Money Talks"
+              style={{ height: '168px', width: 'auto' }}
+            />
+          </div>
         </Link>
 
         {/* Desktop nav */}
