@@ -1,11 +1,11 @@
 export default function Ticker() {
   const items = [
-    '⚡ FREE PICK: Ohtani OVER 6.5 K\'s (-135)',
-    '🔥 SHARP ACTION: Dodgers ML (-220)',
-    '📊 PROP: Cease UNDER 1.5 ER (+110)',
-    '💰 VALUE PLAY: Blue Jays ML (-122)',
-    '⚾ TODAY\'S CARD: 5 Game Winners + 5 Props',
-    '📈 TRACK RECORD: Published every Sunday',
+    '⚡ FREE PICK: Chase Burns OVER 5.5 K\'s (-140)',
+    '🔥 VALUE PLAY: Orioles ML (+112) — Plus money at home',
+    '📊 PROP: Elly De La Cruz OVER 1.5 Total Bases (+115)',
+    '💰 SHARP ACTION: Rays ML (-126) vs White Sox',
+    '⚾ TODAY\'S CARD: 5 Game Winners + 4 Props',
+    '📈 TRACK RECORD: 4-1 Game Winners since launch',
     '🎯 WHERE SMART MONEY TALKS',
   ]
 

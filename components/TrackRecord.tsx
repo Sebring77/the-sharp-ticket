@@ -11,10 +11,10 @@ export default function TrackRecord() {
         {/* Season stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           {[
-            { label: 'Season Record', value: '—', sub: 'Tracking from launch' },
-            { label: 'Props Record', value: '—', sub: 'Tracking from launch' },
-            { label: 'Units This Week', value: '—', sub: 'Updated Sunday' },
-            { label: 'Free Picks', value: '—', sub: 'One per day, public' },
+            { label: 'Game Winners', value: '4-1', sub: 'Since launch Apr 15' },
+            { label: 'Props Record', value: '2-3', sub: 'Since launch Apr 15' },
+            { label: 'Units Net', value: '+0.4', sub: 'Week of Apr 13–19' },
+            { label: 'Free Pick', value: '1-1', sub: 'Ohtani 9K ✅ · Burns TBD' },
           ].map((stat) => (
             <div key={stat.label} className="bg-sharp-card border border-sharp-border rounded-lg p-4 text-center">
               <p className="text-3xl font-black text-sharp-green mb-1">{stat.value}</p>

@@ -1,17 +1,16 @@
 const gameWinners = [
-  { game: 'NYM @ LAD', pick: 'Dodgers ML', line: '-220', confidence: 3, note: 'Ohtani pitching · Mets 7-11 · Soto on IL' },
-  { game: 'LAA @ NYY', pick: 'Yankees ML', line: '-190', confidence: 3, note: '84°F · Wind out to center · Luis Gil' },
-  { game: 'TOR @ MIL', pick: 'Blue Jays ML', line: '-122', confidence: 3, note: 'Dylan Cease · Brewers without Yelich' },
-  { game: 'COL @ HOU', pick: 'Astros ML', line: '-184', confidence: 2, note: 'Fade Rockies on road · Rockies 6-11' },
-  { game: 'WSH @ PIT', pick: 'Pirates ML', line: '-178', confidence: 2, note: 'Pirates 10-7 at home' },
+  { game: 'LAA @ NYY', pick: 'Yankees ML', line: '-260', confidence: 3, note: 'Max Fried (1.93 ERA) · 85°F · Wind blowing out' },
+  { game: 'COL @ HOU', pick: 'Astros ML', line: '-198', confidence: 2, note: 'Fade Rockies on road · Rockies 6-11' },
+  { game: 'TB @ CHW', pick: 'Rays ML', line: '-126', confidence: 3, note: 'White Sox 6-11 · Steven Matz goes for Tampa' },
+  { game: 'WSH @ PIT', pick: 'Pirates ML', line: '-166', confidence: 2, note: 'Pirates 11-7 · Back-to-back fade on Washington' },
+  { game: 'BAL @ CLE', pick: 'Orioles ML', line: '+112', confidence: 3, note: 'VALUE PLAY · Plus money at home · Shane Baz' },
 ]
 
 const props = [
-  { player: 'Shohei Ohtani', prop: 'OVER 6.5 K\'s', line: '-135', tag: 'FREE PICK' },
-  { player: 'Dylan Cease', prop: 'OVER 6.5 K\'s', line: '-116', tag: 'PREMIUM' },
-  { player: 'Dylan Cease', prop: 'UNDER 1.5 ER', line: '+110', tag: 'PREMIUM' },
-  { player: 'Randy Vasquez', prop: 'UNDER 4.5 K\'s', line: '-131', tag: 'PREMIUM' },
-  { player: 'NYY-LAA Total', prop: 'OVER 10.0', line: '-123', tag: 'PREMIUM' },
+  { player: 'Chase Burns', prop: 'OVER K\'s (5.5)', line: '-140', tag: 'FREE PICK' },
+  { player: 'Elly De La Cruz', prop: 'OVER 1.5 Total Bases', line: '+115', tag: 'PREMIUM' },
+  { player: 'Max Fried', prop: 'OVER 5.5 K\'s', line: '-110', tag: 'PREMIUM' },
+  { player: 'Luis Castillo', prop: 'OVER 5.5 K\'s', line: '-118', tag: 'PREMIUM' },
 ]
 
 export default function TodayCard() {
@@ -20,7 +19,7 @@ export default function TodayCard() {
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center gap-3 mb-10">
           <span className="h-px flex-1 bg-sharp-border" />
-          <span className="text-sharp-green text-xs font-bold tracking-[0.3em] uppercase">Today's Full Card — Wed April 15</span>
+          <span className="text-sharp-green text-xs font-bold tracking-[0.3em] uppercase">Today's Full Card — Thu April 16</span>
           <span className="h-px flex-1 bg-sharp-border" />
         </div>
 
