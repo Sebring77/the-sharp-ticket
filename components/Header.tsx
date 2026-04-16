@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import LogoSVG from './LogoSVG'
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -11,13 +12,7 @@ export default function Header() {
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center">
-          <div style={{ height: '48px', overflow: 'hidden' }}>
-            <img
-              src="/logo.jpg"
-              alt="The Sharp Ticket — Where Smart Money Talks"
-              style={{ height: '168px', width: 'auto' }}
-            />
-          </div>
+          <LogoSVG className="h-11 w-auto" />
         </Link>
 
         {/* Desktop nav */}
