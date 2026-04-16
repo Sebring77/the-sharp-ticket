@@ -13,65 +13,85 @@ const props = [
   { player: 'Luis Castillo', prop: 'OVER 5.5 K\'s', line: '-118', tag: 'PREMIUM' },
 ]
 
+const freePick = props.find((p) => p.tag === 'FREE PICK')!
+const premiumProps = props.filter((p) => p.tag === 'PREMIUM')
+
 export default function TodayCard() {
   return (
     <section className="py-16 px-4 bg-sharp-dark">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center gap-3 mb-10">
           <span className="h-px flex-1 bg-sharp-border" />
-          <span className="text-sharp-green text-xs font-bold tracking-[0.3em] uppercase">Today's Full Card — Thu April 16</span>
+          <span className="text-sharp-green text-xs font-bold tracking-[0.3em] uppercase">Today's Card — Thu April 16</span>
           <span className="h-px flex-1 bg-sharp-border" />
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
-          {/* Game Winners */}
+          {/* Game Winners — locked */}
           <div>
             <h3 className="text-white font-bold text-lg mb-4 flex items-center gap-2">
               <span className="text-sharp-green">⚾</span> Game Winners
+              <span className="text-xs font-normal text-sharp-muted ml-1">({gameWinners.length} picks today)</span>
             </h3>
             <div className="space-y-3">
-              {gameWinners.map((g) => (
-                <div key={g.game} className="bg-sharp-card border border-sharp-border rounded-lg p-4 flex items-center justify-between gap-4">
+              {/* First pick shown as teaser — matchup visible, pick locked */}
+              <div className="bg-sharp-card border border-sharp-border rounded-lg p-4 flex items-center justify-between gap-4">
+                <div className="min-w-0">
+                  <p className="text-sharp-muted text-xs font-medium mb-0.5">{gameWinners[0].game}</p>
+                  <p className="text-white/30 font-bold blur-sm select-none">██████ ML</p>
+                  <p className="text-sharp-muted text-xs mt-0.5">{gameWinners[0].note}</p>
+                </div>
+                <div className="text-right shrink-0">
+                  <p className="text-white/20 font-bold text-lg blur-sm select-none">-000</p>
+                  <span className="text-xs text-sharp-muted">🔒 Subscribers</span>
+                </div>
+              </div>
+              {/* Remaining picks fully locked */}
+              {gameWinners.slice(1).map((g) => (
+                <div key={g.game} className="bg-sharp-card border border-sharp-border rounded-lg p-4 flex items-center justify-between gap-4 opacity-50">
                   <div className="min-w-0">
                     <p className="text-sharp-muted text-xs font-medium mb-0.5">{g.game}</p>
-                    <p className="text-white font-bold truncate">{g.pick}</p>
-                    <p className="text-sharp-muted text-xs mt-0.5">{g.note}</p>
+                    <p className="text-white/20 font-bold blur-sm select-none">██████ ML</p>
                   </div>
                   <div className="text-right shrink-0">
-                    <p className="text-sharp-gold font-bold text-lg">{g.line}</p>
-                    <div className="flex gap-0.5 justify-end mt-1">
-                      {[1, 2, 3].map((star) => (
-                        <span key={star} className={`text-xs ${star <= g.confidence ? 'text-sharp-green' : 'text-sharp-border'}`}>●</span>
-                      ))}
-                    </div>
+                    <span className="text-sharp-muted text-xs">🔒</span>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Props */}
+          {/* Props — free pick shown, rest locked */}
           <div>
             <h3 className="text-white font-bold text-lg mb-4 flex items-center gap-2">
               <span className="text-sharp-green">🎯</span> Prop Card
+              <span className="text-xs font-normal text-sharp-muted ml-1">({props.length} props today)</span>
             </h3>
             <div className="space-y-3">
-              {props.map((p, i) => (
-                <div key={i} className={`relative bg-sharp-card border rounded-lg p-4 flex items-center justify-between gap-4 ${p.tag === 'FREE PICK' ? 'border-sharp-green/40 glow-box' : 'border-sharp-border'}`}>
-                  {p.tag === 'FREE PICK' && (
-                    <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-sharp-green to-sharp-gold rounded-t-lg" />
-                  )}
+              {/* Free pick — fully visible */}
+              <div className="relative bg-sharp-card border border-sharp-green/40 glow-box rounded-lg p-4 flex items-center justify-between gap-4">
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-sharp-green to-sharp-gold rounded-t-lg" />
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2 mb-0.5">
+                    <span className="text-xs font-bold px-1.5 py-0.5 rounded bg-sharp-green/20 text-sharp-green">FREE PICK</span>
+                  </div>
+                  <p className="text-white font-bold">{freePick.player}</p>
+                  <p className="text-sharp-muted text-sm">{freePick.prop}</p>
+                </div>
+                <div className="text-right shrink-0">
+                  <p className="font-bold text-lg text-sharp-green">{freePick.line}</p>
+                </div>
+              </div>
+              {/* Premium props — locked */}
+              {premiumProps.map((p, i) => (
+                <div key={i} className="bg-sharp-card border border-sharp-border rounded-lg p-4 flex items-center justify-between gap-4 opacity-50">
                   <div className="min-w-0">
-                    <div className="flex items-center gap-2 mb-0.5">
-                      <span className={`text-xs font-bold px-1.5 py-0.5 rounded ${p.tag === 'FREE PICK' ? 'bg-sharp-green/20 text-sharp-green' : 'bg-white/5 text-sharp-muted'}`}>
-                        {p.tag}
-                      </span>
-                    </div>
-                    <p className="text-white font-bold">{p.player}</p>
-                    <p className="text-sharp-muted text-sm">{p.prop}</p>
+                    <span className="text-xs font-bold px-1.5 py-0.5 rounded bg-white/5 text-sharp-muted">PREMIUM</span>
+                    <p className="text-white/20 font-bold blur-sm select-none mt-1">██████████</p>
+                    <p className="text-sharp-muted/30 text-sm blur-sm select-none">████████████</p>
                   </div>
                   <div className="text-right shrink-0">
-                    <p className={`font-bold text-lg ${p.tag === 'FREE PICK' ? 'text-sharp-green' : 'text-sharp-gold'}`}>{p.line}</p>
+                    <span className="text-sharp-muted text-xs">🔒</span>
                   </div>
                 </div>
               ))}
