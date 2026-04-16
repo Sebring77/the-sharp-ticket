@@ -1,7 +1,26 @@
+'use client'
+
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import { useState } from 'react'
+
+const MONTHLY_PRICE_ID = process.env.NEXT_PUBLIC_STRIPE_MONTHLY_PRICE_ID!
+const ANNUAL_PRICE_ID = process.env.NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID!
+
+async function startCheckout(priceId: string, setLoading: (v: string | null) => void) {
+  setLoading(priceId)
+  const res = await fetch('/api/checkout', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ priceId }),
+  })
+  const { url } = await res.json()
+  if (url) window.location.href = url
+  else setLoading(null)
+}
 
 export default function SubscribePage() {
+  const [loading, setLoading] = useState<string | null>(null)
   return (
     <main className="min-h-screen bg-sharp-dark">
       <Header />
@@ -40,8 +59,12 @@ export default function SubscribePage() {
                     </li>
                   ))}
                 </ul>
-                <button className="w-full py-3 border border-sharp-green/50 text-sharp-green font-bold rounded-lg hover:bg-sharp-green hover:text-black transition-all text-sm">
-                  Start Monthly — $29/mo
+                <button
+                  onClick={() => startCheckout(MONTHLY_PRICE_ID, setLoading)}
+                  disabled={!!loading}
+                  className="w-full py-3 border border-sharp-green/50 text-sharp-green font-bold rounded-lg hover:bg-sharp-green hover:text-black transition-all text-sm disabled:opacity-60 disabled:cursor-wait"
+                >
+                  {loading === MONTHLY_PRICE_ID ? 'Redirecting...' : 'Start Monthly — $29/mo'}
                 </button>
               </div>
 
@@ -71,8 +94,12 @@ export default function SubscribePage() {
                     </li>
                   ))}
                 </ul>
-                <button className="w-full py-3 bg-sharp-green text-black font-bold rounded-lg hover:bg-sharp-gold transition-colors text-sm">
-                  Start Annual — $249/yr
+                <button
+                  onClick={() => startCheckout(ANNUAL_PRICE_ID, setLoading)}
+                  disabled={!!loading}
+                  className="w-full py-3 bg-sharp-green text-black font-bold rounded-lg hover:bg-sharp-gold transition-colors text-sm disabled:opacity-60 disabled:cursor-wait"
+                >
+                  {loading === ANNUAL_PRICE_ID ? 'Redirecting...' : 'Start Annual — $249/yr'}
                 </button>
               </div>
             </div>
