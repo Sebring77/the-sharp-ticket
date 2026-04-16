@@ -53,6 +53,7 @@ export default function Footer() {
               </li>
             </ul>
             <div className="flex gap-3 mt-4">
+              <a href="https://x.com/thesharpticket" target="_blank" rel="noopener noreferrer" className="text-sharp-muted hover:text-sharp-green transition-colors text-sm">X / Twitter</a>
               <a href="#" className="text-sharp-muted hover:text-sharp-green transition-colors text-sm">TikTok</a>
               <a href="#" className="text-sharp-muted hover:text-sharp-green transition-colors text-sm">Instagram</a>
               <a href="#" className="text-sharp-muted hover:text-sharp-green transition-colors text-sm">Spotify</a>
