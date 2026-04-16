@@ -112,7 +112,7 @@ export default function SubscribePage() {
             </div>
 
             <p className="text-sharp-muted text-xs mt-8">
-              Questions? Email <a href="mailto:cash@thesharpticket.com" className="text-sharp-green hover:underline">cash@thesharpticket.com</a>
+              Questions? Call <a href="tel:+17018902274" className="text-sharp-green hover:underline">701-890-CASH</a> or email <a href="mailto:cash@thesharpticket.com" className="text-sharp-green hover:underline">cash@thesharpticket.com</a>
             </p>
           </div>
         </section>

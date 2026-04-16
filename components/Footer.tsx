@@ -42,6 +42,11 @@ export default function Footer() {
             <p className="text-white font-semibold text-sm mb-3">Contact</p>
             <ul className="space-y-2">
               <li>
+                <a href="tel:+17018902274" className="text-sharp-muted text-sm hover:text-sharp-green transition-colors">
+                  701-890-CASH
+                </a>
+              </li>
+              <li>
                 <a href="mailto:cash@thesharpticket.com" className="text-sharp-muted text-sm hover:text-sharp-green transition-colors">
                   cash@thesharpticket.com
                 </a>
@@ -61,7 +66,7 @@ export default function Footer() {
           </p>
           <p className="text-sharp-muted text-xs text-center md:text-right max-w-md">
             For entertainment purposes only. Must be 21+ to bet. Please gamble responsibly.
-            Problem gambling helpline: 1-800-522-4700
+            Problem gambling helpline: 1-800-GAMBLER (1-800-426-2537)
           </p>
         </div>
       </div>
