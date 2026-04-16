@@ -1,12 +1,11 @@
 export default function Ticker() {
   const items = [
-    '⚡ FREE PICK: Chase Burns OVER 5.5 K\'s (-140)',
-    '🔥 VALUE PLAY: Orioles ML (+112) — Plus money at home',
-    '📊 PROP: Elly De La Cruz OVER 1.5 Total Bases (+115)',
-    '💰 SHARP ACTION: Rays ML (-126) vs White Sox',
-    '⚾ TODAY\'S CARD: 5 Game Winners + 4 Props',
-    '📈 TRACK RECORD: 4-1 Game Winners since launch',
-    '🎯 WHERE SMART MONEY TALKS',
+    'THE SHARP TICKET  ·  WHERE SMART MONEY TALKS',
+    'FREE PICK EVERY MORNING  ·  NO CREDIT CARD REQUIRED',
+    '4-1 ON GAME WINNERS SINCE LAUNCH  ·  TRACK RECORD PUBLISHED DAILY',
+    'FULL CARD FOR SUBSCRIBERS  ·  $29/MO  ·  CANCEL ANYTIME',
+    'DAILY MLB PICKS  ·  SHARP ANALYSIS  ·  VERIFIED RESULTS',
+    'JOIN THE SHARPEST CARD IN SPORTS BETTING  ·  THESHARPTICKET.COM',
   ]
 
   const doubled = [...items, ...items]
