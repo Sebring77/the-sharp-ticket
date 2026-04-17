@@ -5,24 +5,29 @@ import Link from 'next/link'
 const weeklyRecord = [
   {
     week: 'Apr 13–19, 2026',
-    gameWinners: { W: 4, L: 1 },
-    props: { W: 2, L: 3 },
-    unitsNet: +0.4,
-    freePick: { pick: 'Ohtani OVER 6.5 K (-135)', result: 'WIN', notes: '9 Ks' },
+    gameWinners: { W: 6, L: 4 },
+    props: { W: 2, L: 7 },
+    unitsNet: -5.3,
+    freePicks: [
+      { pick: 'Ohtani OVER 6.5 K (-135)', result: 'WIN' as const, notes: '9 Ks' },
+      { pick: 'Chase Burns OVER 5.5 K (-140)', result: 'LOSS' as const, notes: '4 Ks' },
+    ],
   },
 ]
 
 const lifetime = {
-  gameWinners: { W: 4, L: 1 },
-  props: { W: 2, L: 3 },
-  total: { W: 6, L: 4 },
-  unitsNet: +0.4,
+  gameWinners: { W: 6, L: 4 },
+  props: { W: 2, L: 7 },
+  total: { W: 8, L: 11 },
+  unitsNet: -5.3,
   trackingSince: 'April 15, 2026',
 }
 
-export default function RecordPage() {
-  const winPct = Math.round((lifetime.total.W / (lifetime.total.W + lifetime.total.L)) * 100)
+function formatUnits(u: number) {
+  return u >= 0 ? `+${u}` : `${u}`
+}
 
+export default function RecordPage() {
   return (
     <main className="min-h-screen bg-sharp-dark">
       <Header />
@@ -40,13 +45,13 @@ export default function RecordPage() {
             {/* Lifetime Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
               {[
-                { label: 'Game Winners', value: `${lifetime.gameWinners.W}-${lifetime.gameWinners.L}`, sub: `${Math.round(lifetime.gameWinners.W / (lifetime.gameWinners.W + lifetime.gameWinners.L) * 100)}% win rate` },
-                { label: 'Props', value: `${lifetime.props.W}-${lifetime.props.L}`, sub: `${Math.round(lifetime.props.W / (lifetime.props.W + lifetime.props.L) * 100)}% win rate` },
-                { label: 'Units Net', value: `+${lifetime.unitsNet}`, sub: 'Since launch' },
-                { label: 'Free Pick', value: '1-0', sub: 'Ohtani 9 K ✅' },
+                { label: 'Game Winners', value: `${lifetime.gameWinners.W}-${lifetime.gameWinners.L}`, sub: `${Math.round(lifetime.gameWinners.W / (lifetime.gameWinners.W + lifetime.gameWinners.L) * 100)}% win rate`, color: 'text-sharp-green' },
+                { label: 'Props', value: `${lifetime.props.W}-${lifetime.props.L}`, sub: `${Math.round(lifetime.props.W / (lifetime.props.W + lifetime.props.L) * 100)}% win rate`, color: 'text-sharp-green' },
+                { label: 'Units Net', value: formatUnits(lifetime.unitsNet), sub: 'Since launch', color: lifetime.unitsNet >= 0 ? 'text-sharp-green' : 'text-red-400' },
+                { label: 'Free Pick', value: '1-1', sub: 'Ohtani ✅ · Burns ❌', color: 'text-sharp-green' },
               ].map((stat) => (
                 <div key={stat.label} className="bg-sharp-card border border-sharp-border rounded-lg p-5 text-center">
-                  <p className="text-3xl font-black text-sharp-green mb-1">{stat.value}</p>
+                  <p className={`text-3xl font-black mb-1 ${stat.color}`}>{stat.value}</p>
                   <p className="text-white text-sm font-semibold mb-1">{stat.label}</p>
                   <p className="text-sharp-muted text-xs">{stat.sub}</p>
                 </div>
@@ -82,25 +87,27 @@ export default function RecordPage() {
                     </div>
                     <div className="text-center">
                       <p className={`font-bold ${week.unitsNet >= 0 ? 'text-sharp-green' : 'text-red-400'}`}>
-                        {week.unitsNet >= 0 ? '+' : ''}{week.unitsNet}
+                        {formatUnits(week.unitsNet)}
                       </p>
                       <p className="text-sharp-muted text-xs">Units</p>
                     </div>
                   </div>
                 </div>
 
-                {/* Free pick highlight */}
-                <div className="bg-black/30 rounded-lg p-4 border border-sharp-green/20">
-                  <p className="text-sharp-green text-xs font-bold uppercase tracking-wider mb-1">Free Pick of the Week</p>
-                  <div className="flex items-center justify-between">
-                    <p className="text-white font-semibold text-sm">{week.freePick.pick}</p>
-                    <div className="flex items-center gap-2">
-                      <span className="text-sharp-muted text-xs">{week.freePick.notes}</span>
-                      <span className={`text-xs font-bold px-2 py-0.5 rounded ${week.freePick.result === 'WIN' ? 'bg-sharp-green/20 text-sharp-green' : 'bg-red-500/20 text-red-400'}`}>
-                        {week.freePick.result}
-                      </span>
+                {/* Free picks highlight */}
+                <div className="bg-black/30 rounded-lg p-4 border border-sharp-green/20 space-y-2">
+                  <p className="text-sharp-green text-xs font-bold uppercase tracking-wider mb-2">Free Picks This Week</p>
+                  {week.freePicks.map((fp, i) => (
+                    <div key={i} className="flex items-center justify-between">
+                      <p className="text-white font-semibold text-sm">{fp.pick}</p>
+                      <div className="flex items-center gap-2">
+                        <span className="text-sharp-muted text-xs">{fp.notes}</span>
+                        <span className={`text-xs font-bold px-2 py-0.5 rounded ${fp.result === 'WIN' ? 'bg-sharp-green/20 text-sharp-green' : 'bg-red-500/20 text-red-400'}`}>
+                          {fp.result}
+                        </span>
+                      </div>
                     </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             ))}

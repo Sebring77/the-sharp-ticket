@@ -16,6 +16,17 @@ type Pick = {
 }
 
 const allPicks: Pick[] = [
+  // April 16 — Game Winners
+  { date: 'Apr 16', type: 'game_winner', game: 'LAA @ NYY', pick: 'NY Yankees ML', line: -260, units: 1, result: 'LOSS', final_score: 'Angels 11, Yankees 4', notes: 'Fried tagged for 5 ER in 5.1 IP. Trout went deep twice.' },
+  { date: 'Apr 16', type: 'game_winner', game: 'COL @ HOU', pick: 'Houston Astros ML', line: -198, units: 1, result: 'WIN', final_score: 'Astros 7, Rockies 4', notes: 'Fade Rockies on road. Rockies now 6-12.' },
+  { date: 'Apr 16', type: 'game_winner', game: 'TB @ CHW', pick: 'Tampa Bay Rays ML', line: -126, units: 1, result: 'WIN', final_score: 'Rays 5, White Sox 3', notes: 'Rays win 5th straight. Caminero, Fraley, DeLuca all homer.' },
+  { date: 'Apr 16', type: 'game_winner', game: 'WSH @ PIT', pick: 'Pittsburgh Pirates ML', line: -166, units: 1, result: 'LOSS', final_score: 'Nationals 8, Pirates 7 (10)', notes: 'James Wood walks it off in extras. Heartbreaker.' },
+  { date: 'Apr 16', type: 'game_winner', game: 'BAL @ CLE', pick: 'Baltimore Orioles ML', line: 112, units: 1, result: 'LOSS', final_score: 'Guardians 10, Orioles 9', notes: 'Plus-money value play did not convert. Guardians rallied late.' },
+  // April 16 — Props
+  { date: 'Apr 16', type: 'prop', game: 'SF @ CIN', pick: 'Chase Burns OVER 5.5 K', line: -140, units: 1, result: 'LOSS', notes: 'FREE PICK. Burns held to 4 Ks in 6 IP. Giants shutout Reds 3-0.', is_free_pick: true },
+  { date: 'Apr 16', type: 'prop', game: 'SF @ CIN', pick: 'Elly De La Cruz OVER 1.5 Total Bases', line: 115, units: 1, result: 'LOSS', notes: 'Reds shut out 3-0. De La Cruz went under the TB threshold.' },
+  { date: 'Apr 16', type: 'prop', game: 'LAA @ NYY', pick: 'Max Fried OVER 5.5 K', line: -110, units: 1, result: 'LOSS', notes: 'Fried struck out just 3 in 5.1 IP before being pulled.' },
+  { date: 'Apr 16', type: 'prop', game: 'SEA @ SD', pick: 'Luis Castillo OVER 5.5 K', line: -118, units: 1, result: 'LOSS', notes: 'Castillo struggled vs. San Diego. Mariners fell 4-1.' },
   // April 15 — Game Winners
   { date: 'Apr 15', type: 'game_winner', game: 'NYM @ LAD', pick: 'LA Dodgers ML', line: -220, units: 1, result: 'WIN', final_score: 'Dodgers 4, Mets 1', notes: 'Ohtani pitching, Mets 7-11, Soto on IL' },
   { date: 'Apr 15', type: 'game_winner', game: 'LAA @ NYY', pick: 'NY Yankees ML', line: -190, units: 1, result: 'WIN', final_score: 'Yankees 5, Angels 4', notes: 'Luis Gil, 84°F, wind out at Yankee Stadium' },
@@ -57,7 +68,7 @@ export default function PicksPage() {
               <div>
                 <p className="text-sharp-muted text-xs uppercase tracking-wider mb-1">All Picks Since Launch</p>
                 <p className="text-4xl font-black text-sharp-green">{wins}-{losses}</p>
-                <p className="text-sharp-muted text-sm mt-1">Tracking from April 15, 2026</p>
+                <p className="text-sharp-muted text-sm mt-1">Tracking from April 15, 2026 · Updated Apr 17</p>
               </div>
               <div className="flex gap-6">
                 <div className="text-center">
@@ -69,7 +80,7 @@ export default function PicksPage() {
                   <p className="text-sharp-muted text-xs mt-1">Props</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-2xl font-black text-sharp-green">+0.4</p>
+                  <p className="text-2xl font-black text-red-400">-5.3</p>
                   <p className="text-sharp-muted text-xs mt-1">Units Net</p>
                 </div>
               </div>

@@ -1,16 +1,16 @@
 const gameWinners = [
-  { game: 'LAA @ NYY', pick: 'Yankees ML', line: '-260', confidence: 3, note: 'Max Fried (1.93 ERA) · 85°F · Wind blowing out' },
-  { game: 'COL @ HOU', pick: 'Astros ML', line: '-198', confidence: 2, note: 'Fade Rockies on road · Rockies 6-11' },
-  { game: 'TB @ CHW', pick: 'Rays ML', line: '-126', confidence: 3, note: 'White Sox 6-11 · Steven Matz goes for Tampa' },
-  { game: 'WSH @ PIT', pick: 'Pirates ML', line: '-166', confidence: 2, note: 'Pirates 11-7 · Back-to-back fade on Washington' },
-  { game: 'BAL @ CLE', pick: 'Orioles ML', line: '+112', confidence: 3, note: 'VALUE PLAY · Plus money at home · Shane Baz' },
+  { game: 'LAD @ COL', pick: 'LA Dodgers ML', line: '-195', confidence: 3, note: 'Glasnow (10.6 K/9) · Rockies 6-12 · Dodgers 13-4' },
+  { game: 'SF @ WSH', pick: 'SF Giants ML', line: '-128', confidence: 2, note: 'Logan Webb vs Zack Littell · Fade weak Nationals offense' },
+  { game: 'ATL @ PHI', pick: 'Philadelphia Phillies ML', line: '-148', confidence: 2, note: 'Phillies home edge · Walker vs Pérez · CBP crowd factor' },
+  { game: 'STL @ HOU', pick: 'Houston Astros ML', line: '-162', confidence: 3, note: 'Astros 5-2 at home · Cardinals fading on road' },
+  { game: 'TB @ PIT', pick: 'Tampa Bay Rays ML', line: '-118', confidence: 2, note: 'VALUE — Rays on 5-game win streak · hot momentum play' },
 ]
 
 const props = [
-  { player: 'Chase Burns', prop: 'OVER K\'s (5.5)', line: '-140', tag: 'FREE PICK' },
-  { player: 'Elly De La Cruz', prop: 'OVER 1.5 Total Bases', line: '+115', tag: 'PREMIUM' },
-  { player: 'Max Fried', prop: 'OVER 5.5 K\'s', line: '-110', tag: 'PREMIUM' },
-  { player: 'Luis Castillo', prop: 'OVER 5.5 K\'s', line: '-118', tag: 'PREMIUM' },
+  { player: 'Tyler Glasnow', prop: 'OVER K\'s (7.5)', line: '-115', tag: 'FREE PICK' },
+  { player: 'Logan Gilbert', prop: 'OVER 5.5 K\'s', line: '-120', tag: 'PREMIUM' },
+  { player: 'Joe Ryan', prop: 'OVER 5.5 K\'s', line: '-115', tag: 'PREMIUM' },
+  { player: 'Elly De La Cruz', prop: 'OVER 1.5 Total Bases', line: '+108', tag: 'PREMIUM' },
 ]
 
 const freePick = props.find((p) => p.tag === 'FREE PICK')!
@@ -22,7 +22,7 @@ export default function TodayCard() {
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center gap-3 mb-10">
           <span className="h-px flex-1 bg-sharp-border" />
-          <span className="text-sharp-green text-xs font-bold tracking-[0.3em] uppercase">Today's Card — Thu April 16</span>
+          <span className="text-sharp-green text-xs font-bold tracking-[0.3em] uppercase">Today's Card — Fri April 17</span>
           <span className="h-px flex-1 bg-sharp-border" />
         </div>
 
