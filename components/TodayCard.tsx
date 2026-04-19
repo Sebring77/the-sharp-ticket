@@ -1,16 +1,15 @@
 const gameWinners = [
-  { game: 'LAD @ COL', pick: 'LA Dodgers ML', line: '-195', confidence: 3, note: 'Glasnow (10.6 K/9) · Rockies 6-12 · Dodgers 13-4' },
-  { game: 'SF @ WSH', pick: 'SF Giants ML', line: '-128', confidence: 2, note: 'Logan Webb vs Zack Littell · Fade weak Nationals offense' },
-  { game: 'ATL @ PHI', pick: 'Philadelphia Phillies ML', line: '-148', confidence: 2, note: 'Phillies home edge · Walker vs Pérez · CBP crowd factor' },
-  { game: 'STL @ HOU', pick: 'Houston Astros ML', line: '-162', confidence: 3, note: 'Astros 5-2 at home · Cardinals fading on road' },
-  { game: 'TB @ PIT', pick: 'Tampa Bay Rays ML', line: '-118', confidence: 2, note: 'VALUE — Rays on 5-game win streak · hot momentum play' },
+  { sport: '⚾ MLB', game: 'ATL @ PHI — SNB', pick: 'Atlanta Braves ML', line: '+100', confidence: 3, note: 'Braves 14-7 (best record) · Phillies 8-12 · Grant Holmes xERA 3.16 · Rubber game' },
+  { sport: '⚾ MLB', game: 'LAD @ COL', pick: 'LA Dodgers ML', line: '-205', confidence: 2, note: 'Lorenzen 8.10 ERA · Fade the worst arm on today\'s board · 1 unit only at this juice' },
+  { sport: '⚾ MLB', game: 'TEX @ SEA', pick: 'Seattle Mariners ML', line: '-138', confidence: 2, note: 'Bryan Woo at home · Mariners won Sat 7-3 · Closing the series' },
+  { sport: '⚾ MLB', game: 'KC @ NYY', pick: 'NY Yankees ML', line: '-156', confidence: 2, note: 'Weathers vs Ragans · Yankees close at home · Royals won 2 straight but home edge wins' },
 ]
 
 const props = [
-  { player: 'Tyler Glasnow', prop: 'OVER K\'s (7.5)', line: '-115', tag: 'FREE PICK' },
-  { player: 'Logan Gilbert', prop: 'OVER 5.5 K\'s', line: '-120', tag: 'PREMIUM' },
-  { player: 'Joe Ryan', prop: 'OVER 5.5 K\'s', line: '-115', tag: 'PREMIUM' },
-  { player: 'Elly De La Cruz', prop: 'OVER 1.5 Total Bases', line: '+108', tag: 'PREMIUM' },
+  { player: 'Atlanta Braves ML', prop: '+100 · FREE PICK', line: '+100', tag: 'FREE PICK', sport: '⚾' },
+  { player: 'Roki Sasaki', prop: "OVER 5.5 K's", line: '-115', tag: 'PREMIUM', sport: '⚾' },
+  { player: 'Bryan Woo', prop: "OVER 5.5 K's", line: '-118', tag: 'PREMIUM', sport: '⚾' },
+  { player: 'Garrett Crochet', prop: "OVER 7.5 K's", line: '-110', tag: 'PREMIUM', sport: '⚾' },
 ]
 
 const freePick = props.find((p) => p.tag === 'FREE PICK')!
@@ -22,7 +21,7 @@ export default function TodayCard() {
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center gap-3 mb-10">
           <span className="h-px flex-1 bg-sharp-border" />
-          <span className="text-sharp-green text-xs font-bold tracking-[0.3em] uppercase">Today's Card — Fri April 17</span>
+          <span className="text-sharp-green text-xs font-bold tracking-[0.3em] uppercase">Today's Card — Sun April 19 · MLB · 15 Games</span>
           <span className="h-px flex-1 bg-sharp-border" />
         </div>
 
@@ -30,14 +29,14 @@ export default function TodayCard() {
           {/* Game Winners — locked */}
           <div>
             <h3 className="text-white font-bold text-lg mb-4 flex items-center gap-2">
-              <span className="text-sharp-green">⚾</span> Game Winners
+              <span className="text-sharp-green">🎰</span> Game Winners
               <span className="text-xs font-normal text-sharp-muted ml-1">({gameWinners.length} picks today)</span>
             </h3>
             <div className="space-y-3">
               {/* First pick shown as teaser — matchup visible, pick locked */}
               <div className="bg-sharp-card border border-sharp-border rounded-lg p-4 flex items-center justify-between gap-4">
                 <div className="min-w-0">
-                  <p className="text-sharp-muted text-xs font-medium mb-0.5">{gameWinners[0].game}</p>
+                  <p className="text-sharp-muted text-xs font-medium mb-0.5">{gameWinners[0].sport} · {gameWinners[0].game}</p>
                   <p className="text-white/30 font-bold blur-sm select-none">██████ ML</p>
                   <p className="text-sharp-muted text-xs mt-0.5">{gameWinners[0].note}</p>
                 </div>
@@ -50,7 +49,7 @@ export default function TodayCard() {
               {gameWinners.slice(1).map((g) => (
                 <div key={g.game} className="bg-sharp-card border border-sharp-border rounded-lg p-4 flex items-center justify-between gap-4 opacity-50">
                   <div className="min-w-0">
-                    <p className="text-sharp-muted text-xs font-medium mb-0.5">{g.game}</p>
+                    <p className="text-sharp-muted text-xs font-medium mb-0.5">{g.sport} · {g.game}</p>
                     <p className="text-white/20 font-bold blur-sm select-none">██████ ML</p>
                   </div>
                   <div className="text-right shrink-0">

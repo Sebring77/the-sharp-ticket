@@ -6,20 +6,23 @@ const weeklyRecord = [
   {
     week: 'Apr 13–19, 2026',
     gameWinners: { W: 6, L: 4 },
-    props: { W: 2, L: 7 },
-    unitsNet: -5.3,
+    props: { W: 2, L: 9 },
+    unitsNet: -7.3,
     freePicks: [
-      { pick: 'Ohtani OVER 6.5 K (-135)', result: 'WIN' as const, notes: '9 Ks' },
-      { pick: 'Chase Burns OVER 5.5 K (-140)', result: 'LOSS' as const, notes: '4 Ks' },
+      { pick: 'Ohtani OVER 6.5 K (-135)', result: 'WIN' as const, notes: '9 Ks — Apr 15' },
+      { pick: 'Chase Burns OVER 5.5 K (-140)', result: 'LOSS' as const, notes: '4 Ks — Apr 16' },
+      { pick: 'Tyler Glasnow OVER 7.5 K (-115)', result: 'LOSS' as const, notes: '7 Ks — Apr 17' },
+      { pick: 'Taj Bradley OVER 6.5 K (-120)', result: 'LOSS' as const, notes: '5 Ks — Apr 18' },
+      { pick: 'Atlanta Braves ML (+100)', result: 'PENDING' as const, notes: 'Braves 14-7 · Apr 19 SNB' },
     ],
   },
 ]
 
 const lifetime = {
   gameWinners: { W: 6, L: 4 },
-  props: { W: 2, L: 7 },
-  total: { W: 8, L: 11 },
-  unitsNet: -5.3,
+  props: { W: 2, L: 9 },
+  total: { W: 8, L: 13 },
+  unitsNet: -7.3,
   trackingSince: 'April 15, 2026',
 }
 
@@ -48,7 +51,7 @@ export default function RecordPage() {
                 { label: 'Game Winners', value: `${lifetime.gameWinners.W}-${lifetime.gameWinners.L}`, sub: `${Math.round(lifetime.gameWinners.W / (lifetime.gameWinners.W + lifetime.gameWinners.L) * 100)}% win rate`, color: 'text-sharp-green' },
                 { label: 'Props', value: `${lifetime.props.W}-${lifetime.props.L}`, sub: `${Math.round(lifetime.props.W / (lifetime.props.W + lifetime.props.L) * 100)}% win rate`, color: 'text-sharp-green' },
                 { label: 'Units Net', value: formatUnits(lifetime.unitsNet), sub: 'Since launch', color: lifetime.unitsNet >= 0 ? 'text-sharp-green' : 'text-red-400' },
-                { label: 'Free Pick', value: '1-1', sub: 'Ohtani ✅ · Burns ❌', color: 'text-sharp-green' },
+                { label: 'Free Pick', value: '1-3', sub: 'Ohtani ✅ · Burns ❌ · Glasnow ❌ · Bradley ❌ · ATL LIVE', color: 'text-sharp-green' },
               ].map((stat) => (
                 <div key={stat.label} className="bg-sharp-card border border-sharp-border rounded-lg p-5 text-center">
                   <p className={`text-3xl font-black mb-1 ${stat.color}`}>{stat.value}</p>
@@ -102,8 +105,8 @@ export default function RecordPage() {
                       <p className="text-white font-semibold text-sm">{fp.pick}</p>
                       <div className="flex items-center gap-2">
                         <span className="text-sharp-muted text-xs">{fp.notes}</span>
-                        <span className={`text-xs font-bold px-2 py-0.5 rounded ${fp.result === 'WIN' ? 'bg-sharp-green/20 text-sharp-green' : 'bg-red-500/20 text-red-400'}`}>
-                          {fp.result}
+                        <span className={`text-xs font-bold px-2 py-0.5 rounded ${fp.result === 'WIN' ? 'bg-sharp-green/20 text-sharp-green' : fp.result === 'PENDING' ? 'bg-sharp-gold/20 text-sharp-gold' : 'bg-red-500/20 text-red-400'}`}>
+                          {fp.result === 'PENDING' ? 'LIVE' : fp.result}
                         </span>
                       </div>
                     </div>

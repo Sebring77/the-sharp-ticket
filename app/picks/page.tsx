@@ -9,13 +9,26 @@ type Pick = {
   pick: string
   line: number
   units: number
-  result: 'WIN' | 'LOSS' | 'PUSH'
+  result: 'WIN' | 'LOSS' | 'PUSH' | 'PENDING'
   notes: string
   is_free_pick?: boolean
   final_score?: string
 }
 
 const allPicks: Pick[] = [
+  // April 19 — Game Winners (PENDING)
+  { date: 'Apr 19', type: 'game_winner', game: 'ATL @ PHI', pick: 'Atlanta Braves ML', line: 100, units: 3, result: 'PENDING', notes: 'FREE PICK. Braves 14-7 (best record in MLB), even money road dog vs 8-12 Phillies. Grant Holmes xERA 3.16. Rubber game Sunday Night Baseball.', is_free_pick: true },
+  { date: 'Apr 19', type: 'game_winner', game: 'LAD @ COL', pick: 'LA Dodgers ML', line: -205, units: 1, result: 'PENDING', notes: 'Lorenzen 8.10 ERA. Fade the 8.10 ERA arm vs the best lineup in the NL. 1 unit only at this juice.' },
+  { date: 'Apr 19', type: 'game_winner', game: 'TEX @ SEA', pick: 'Seattle Mariners ML', line: -138, units: 1, result: 'PENDING', notes: 'Bryan Woo at home. Mariners won Sat 7-3. Closing out the series.' },
+  { date: 'Apr 19', type: 'game_winner', game: 'KC @ NYY', pick: 'NY Yankees ML', line: -156, units: 1, result: 'PENDING', notes: 'Weathers vs Ragans. Yankees close at home.' },
+  // April 19 — Props (PENDING)
+  { date: 'Apr 19', type: 'prop', game: 'LAD @ COL', pick: 'Roki Sasaki OVER 5.5 K', line: -115, units: 2, result: 'PENDING', notes: 'Rockies K rate bottom 5 in NL. Sasaki splitter generates whiffs regardless of altitude.' },
+  { date: 'Apr 19', type: 'prop', game: 'TEX @ SEA', pick: 'Bryan Woo OVER 5.5 K', line: -118, units: 2, result: 'PENDING', notes: 'Woo at T-Mobile Park. Rangers high K rate on the road.' },
+  { date: 'Apr 19', type: 'prop', game: 'DET @ BOS', pick: 'Garrett Crochet OVER 7.5 K', line: -110, units: 2, result: 'PENDING', notes: 'Elite arm. Tigers swing-and-miss issues vs elite left-handers. -110 is fair juice for 7.5 Ks.' },
+  // April 18 — Props
+  { date: 'Apr 18', type: 'prop', game: 'CIN @ MIN', pick: 'Taj Bradley OVER 6.5 K', line: -120, units: 1, result: 'LOSS', notes: 'FREE PICK. Bradley struck out 5. Fell short of the 6.5 line.', is_free_pick: true },
+  // April 17 — Props
+  { date: 'Apr 17', type: 'prop', game: 'LAD @ COL', pick: 'Tyler Glasnow OVER 7.5 K', line: -115, units: 1, result: 'LOSS', notes: 'FREE PICK. Glasnow struck out 7 in 7 IP at Coors — just fell short of the 7.5 line. Dodgers won 7-1.', is_free_pick: true },
   // April 16 — Game Winners
   { date: 'Apr 16', type: 'game_winner', game: 'LAA @ NYY', pick: 'NY Yankees ML', line: -260, units: 1, result: 'LOSS', final_score: 'Angels 11, Yankees 4', notes: 'Fried tagged for 5 ER in 5.1 IP. Trout went deep twice.' },
   { date: 'Apr 16', type: 'game_winner', game: 'COL @ HOU', pick: 'Houston Astros ML', line: -198, units: 1, result: 'WIN', final_score: 'Astros 7, Rockies 4', notes: 'Fade Rockies on road. Rockies now 6-12.' },
@@ -48,6 +61,7 @@ function formatLine(line: number) {
 export default function PicksPage() {
   const wins = allPicks.filter(p => p.result === 'WIN').length
   const losses = allPicks.filter(p => p.result === 'LOSS').length
+  const pending = allPicks.filter(p => p.result === 'PENDING').length
 
   return (
     <main className="min-h-screen bg-sharp-dark">
@@ -68,7 +82,7 @@ export default function PicksPage() {
               <div>
                 <p className="text-sharp-muted text-xs uppercase tracking-wider mb-1">All Picks Since Launch</p>
                 <p className="text-4xl font-black text-sharp-green">{wins}-{losses}</p>
-                <p className="text-sharp-muted text-sm mt-1">Tracking from April 15, 2026 · Updated Apr 17</p>
+                <p className="text-sharp-muted text-sm mt-1">Tracking from April 15, 2026 · Updated Apr 19{pending > 0 ? ` · ${pending} live today` : ''}</p>
               </div>
               <div className="flex gap-6">
                 <div className="text-center">
@@ -80,7 +94,7 @@ export default function PicksPage() {
                   <p className="text-sharp-muted text-xs mt-1">Props</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-2xl font-black text-red-400">-5.3</p>
+                  <p className="text-2xl font-black text-red-400">-7.3</p>
                   <p className="text-sharp-muted text-xs mt-1">Units Net</p>
                 </div>
               </div>
@@ -105,7 +119,7 @@ export default function PicksPage() {
               </div>
 
               {allPicks.map((pick, i) => (
-                <div key={i} className={`bg-sharp-card border rounded-lg px-4 py-3 ${pick.result === 'WIN' ? 'border-sharp-green/20' : pick.result === 'LOSS' ? 'border-red-500/20' : 'border-sharp-border'}`}>
+                <div key={i} className={`bg-sharp-card border rounded-lg px-4 py-3 ${pick.result === 'WIN' ? 'border-sharp-green/20' : pick.result === 'LOSS' ? 'border-red-500/20' : pick.result === 'PENDING' ? 'border-sharp-gold/30' : 'border-sharp-border'}`}>
                   <div className="md:grid grid-cols-[80px_140px_1fr_80px_60px_70px] gap-3 items-center">
                     <p className="text-sharp-muted text-xs">{pick.date}</p>
                     <div>
@@ -126,8 +140,8 @@ export default function PicksPage() {
                     </div>
                     <p className="text-sharp-gold font-bold text-sm">{formatLine(pick.line)}</p>
                     <p className="text-white text-sm">{pick.units}u</p>
-                    <span className={`text-xs font-black px-2 py-1 rounded w-fit ${pick.result === 'WIN' ? 'bg-sharp-green/20 text-sharp-green' : pick.result === 'LOSS' ? 'bg-red-500/20 text-red-400' : 'bg-white/10 text-white/60'}`}>
-                      {pick.result}
+                    <span className={`text-xs font-black px-2 py-1 rounded w-fit ${pick.result === 'WIN' ? 'bg-sharp-green/20 text-sharp-green' : pick.result === 'LOSS' ? 'bg-red-500/20 text-red-400' : pick.result === 'PENDING' ? 'bg-sharp-gold/20 text-sharp-gold' : 'bg-white/10 text-white/60'}`}>
+                      {pick.result === 'PENDING' ? 'LIVE' : pick.result}
                     </span>
                   </div>
                 </div>
