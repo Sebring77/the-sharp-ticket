@@ -19,12 +19,12 @@ const allPicks: Pick[] = [
   // April 19 — Game Winners (PENDING)
   { date: 'Apr 19', type: 'game_winner', game: 'ATL @ PHI', pick: 'Atlanta Braves ML', line: 100, units: 3, result: 'PENDING', notes: 'FREE PICK. Braves 14-7 (best record in MLB), even money road dog vs 8-12 Phillies. Grant Holmes xERA 3.16. Rubber game Sunday Night Baseball.', is_free_pick: true },
   { date: 'Apr 19', type: 'game_winner', game: 'LAD @ COL', pick: 'LA Dodgers ML', line: -205, units: 1, result: 'PENDING', notes: 'Lorenzen 8.10 ERA. Fade the 8.10 ERA arm vs the best lineup in the NL. 1 unit only at this juice.' },
-  { date: 'Apr 19', type: 'game_winner', game: 'TEX @ SEA', pick: 'Seattle Mariners ML', line: -138, units: 1, result: 'PENDING', notes: 'Bryan Woo at home. Mariners won Sat 7-3. Closing out the series.' },
+  // SEA ML dropped after sim validation — Monte Carlo sim showed TEX edge at 56.2% vs SEA at 43.8%
   { date: 'Apr 19', type: 'game_winner', game: 'KC @ NYY', pick: 'NY Yankees ML', line: -156, units: 1, result: 'PENDING', notes: 'Weathers vs Ragans. Yankees close at home.' },
   // April 19 — Props (PENDING)
   { date: 'Apr 19', type: 'prop', game: 'LAD @ COL', pick: 'Roki Sasaki OVER 5.5 K', line: -115, units: 2, result: 'PENDING', notes: 'Rockies K rate bottom 5 in NL. Sasaki splitter generates whiffs regardless of altitude.' },
   { date: 'Apr 19', type: 'prop', game: 'TEX @ SEA', pick: 'Bryan Woo OVER 5.5 K', line: -118, units: 2, result: 'PENDING', notes: 'Woo at T-Mobile Park. Rangers high K rate on the road.' },
-  { date: 'Apr 19', type: 'prop', game: 'DET @ BOS', pick: 'Garrett Crochet OVER 7.5 K', line: -110, units: 2, result: 'PENDING', notes: 'Elite arm. Tigers swing-and-miss issues vs elite left-handers. -110 is fair juice for 7.5 Ks.' },
+  { date: 'Apr 19', type: 'prop', game: 'DET @ BOS', pick: 'Garrett Crochet OVER 7.5 K', line: -110, units: 2, result: 'PENDING', notes: 'Sim validated: 73.8% hit rate in 10,000 sims. Elite arm. Tigers swing-and-miss issues. Best prop on the board.' },
   // April 18 — Props
   { date: 'Apr 18', type: 'prop', game: 'CIN @ MIN', pick: 'Taj Bradley OVER 6.5 K', line: -120, units: 1, result: 'LOSS', notes: 'FREE PICK. Bradley struck out 5. Fell short of the 6.5 line.', is_free_pick: true },
   // April 17 — Props
