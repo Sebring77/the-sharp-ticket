@@ -3,11 +3,11 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'The Sharp Ticket — Where Smart Money Talks',
-  description: 'Daily MLB picks, props, and analysis from the sharpest minds in sports betting. Game winners, prop cards, and verified results.',
-  keywords: 'MLB picks, sports betting, baseball props, daily picks, sharp money, betting analysis',
+  description: 'Daily picks across MLB, NBA, NHL, and NFL — sim-validated every morning. Game winners, props, and verified results. One free pick every day.',
+  keywords: 'MLB picks, NBA picks, NHL picks, NFL picks, sports betting, daily picks, sharp money, betting analysis, Monte Carlo simulation',
   openGraph: {
     title: 'The Sharp Ticket — Where Smart Money Talks',
-    description: 'Daily MLB picks, props, and analysis. Free pick every day.',
+    description: 'Daily picks across MLB, NBA, NHL, and NFL. Sim-validated. Free pick every day.',
     url: 'https://thesharpticket.com',
     siteName: 'The Sharp Ticket',
     type: 'website',
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'The Sharp Ticket',
-    description: 'Where Smart Money Talks — Daily MLB picks and props.',
+    description: 'Where Smart Money Talks — Daily multi-sport picks and props.',
   },
 }
 

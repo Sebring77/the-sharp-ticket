@@ -13,7 +13,7 @@ export default function Footer() {
               <span className="text-[9px] font-medium tracking-[0.25em] text-sharp-gold uppercase block">Where Smart Money Talks</span>
             </div>
             <p className="text-sharp-muted text-xs leading-relaxed">
-              Daily MLB picks, props, and analysis. One free pick every day. Full card for subscribers.
+              Daily picks across MLB, NBA, NHL, and NFL — sim-validated every morning. One free pick every day. Full card for subscribers.
             </p>
           </div>
 
