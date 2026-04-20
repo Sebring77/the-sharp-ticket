@@ -16,42 +16,13 @@ type Pick = {
 }
 
 const allPicks: Pick[] = [
-  // April 19 — Game Winners (PENDING)
-  { date: 'Apr 19', type: 'game_winner', game: 'ATL @ PHI', pick: 'Atlanta Braves ML', line: 100, units: 3, result: 'PENDING', notes: 'FREE PICK. Braves 14-7 (best record in MLB), even money road dog vs 8-12 Phillies. Grant Holmes xERA 3.16. Rubber game Sunday Night Baseball.', is_free_pick: true },
-  { date: 'Apr 19', type: 'game_winner', game: 'LAD @ COL', pick: 'LA Dodgers ML', line: -205, units: 1, result: 'PENDING', notes: 'Lorenzen 8.10 ERA. Fade the 8.10 ERA arm vs the best lineup in the NL. 1 unit only at this juice.' },
-  // SEA ML dropped after sim validation — Monte Carlo sim showed TEX edge at 56.2% vs SEA at 43.8%
-  { date: 'Apr 19', type: 'game_winner', game: 'KC @ NYY', pick: 'NY Yankees ML', line: -156, units: 1, result: 'PENDING', notes: 'Weathers vs Ragans. Yankees close at home.' },
-  // April 19 — Props (PENDING)
-  { date: 'Apr 19', type: 'prop', game: 'LAD @ COL', pick: 'Roki Sasaki OVER 5.5 K', line: -115, units: 2, result: 'PENDING', notes: 'Rockies K rate bottom 5 in NL. Sasaki splitter generates whiffs regardless of altitude.' },
-  { date: 'Apr 19', type: 'prop', game: 'TEX @ SEA', pick: 'Bryan Woo OVER 5.5 K', line: -118, units: 2, result: 'PENDING', notes: 'Woo at T-Mobile Park. Rangers high K rate on the road.' },
-  { date: 'Apr 19', type: 'prop', game: 'DET @ BOS', pick: 'Garrett Crochet OVER 7.5 K', line: -110, units: 2, result: 'PENDING', notes: 'Sim validated: 73.8% hit rate in 10,000 sims. Elite arm. Tigers swing-and-miss issues. Best prop on the board.' },
-  // April 18 — Props
-  { date: 'Apr 18', type: 'prop', game: 'CIN @ MIN', pick: 'Taj Bradley OVER 6.5 K', line: -120, units: 1, result: 'LOSS', notes: 'FREE PICK. Bradley struck out 5. Fell short of the 6.5 line.', is_free_pick: true },
-  // April 17 — Props
-  { date: 'Apr 17', type: 'prop', game: 'LAD @ COL', pick: 'Tyler Glasnow OVER 7.5 K', line: -115, units: 1, result: 'LOSS', notes: 'FREE PICK. Glasnow struck out 7 in 7 IP at Coors — just fell short of the 7.5 line. Dodgers won 7-1.', is_free_pick: true },
-  // April 16 — Game Winners
-  { date: 'Apr 16', type: 'game_winner', game: 'LAA @ NYY', pick: 'NY Yankees ML', line: -260, units: 1, result: 'LOSS', final_score: 'Angels 11, Yankees 4', notes: 'Fried tagged for 5 ER in 5.1 IP. Trout went deep twice.' },
-  { date: 'Apr 16', type: 'game_winner', game: 'COL @ HOU', pick: 'Houston Astros ML', line: -198, units: 1, result: 'WIN', final_score: 'Astros 7, Rockies 4', notes: 'Fade Rockies on road. Rockies now 6-12.' },
-  { date: 'Apr 16', type: 'game_winner', game: 'TB @ CHW', pick: 'Tampa Bay Rays ML', line: -126, units: 1, result: 'WIN', final_score: 'Rays 5, White Sox 3', notes: 'Rays win 5th straight. Caminero, Fraley, DeLuca all homer.' },
-  { date: 'Apr 16', type: 'game_winner', game: 'WSH @ PIT', pick: 'Pittsburgh Pirates ML', line: -166, units: 1, result: 'LOSS', final_score: 'Nationals 8, Pirates 7 (10)', notes: 'James Wood walks it off in extras. Heartbreaker.' },
-  { date: 'Apr 16', type: 'game_winner', game: 'BAL @ CLE', pick: 'Baltimore Orioles ML', line: 112, units: 1, result: 'LOSS', final_score: 'Guardians 10, Orioles 9', notes: 'Plus-money value play did not convert. Guardians rallied late.' },
-  // April 16 — Props
-  { date: 'Apr 16', type: 'prop', game: 'SF @ CIN', pick: 'Chase Burns OVER 5.5 K', line: -140, units: 1, result: 'LOSS', notes: 'FREE PICK. Burns held to 4 Ks in 6 IP. Giants shutout Reds 3-0.', is_free_pick: true },
-  { date: 'Apr 16', type: 'prop', game: 'SF @ CIN', pick: 'Elly De La Cruz OVER 1.5 Total Bases', line: 115, units: 1, result: 'LOSS', notes: 'Reds shut out 3-0. De La Cruz went under the TB threshold.' },
-  { date: 'Apr 16', type: 'prop', game: 'LAA @ NYY', pick: 'Max Fried OVER 5.5 K', line: -110, units: 1, result: 'LOSS', notes: 'Fried struck out just 3 in 5.1 IP before being pulled.' },
-  { date: 'Apr 16', type: 'prop', game: 'SEA @ SD', pick: 'Luis Castillo OVER 5.5 K', line: -118, units: 1, result: 'LOSS', notes: 'Castillo struggled vs. San Diego. Mariners fell 4-1.' },
-  // April 15 — Game Winners
-  { date: 'Apr 15', type: 'game_winner', game: 'NYM @ LAD', pick: 'LA Dodgers ML', line: -220, units: 1, result: 'WIN', final_score: 'Dodgers 4, Mets 1', notes: 'Ohtani pitching, Mets 7-11, Soto on IL' },
-  { date: 'Apr 15', type: 'game_winner', game: 'LAA @ NYY', pick: 'NY Yankees ML', line: -190, units: 1, result: 'WIN', final_score: 'Yankees 5, Angels 4', notes: 'Luis Gil, 84°F, wind out at Yankee Stadium' },
-  { date: 'Apr 15', type: 'game_winner', game: 'TOR @ MIL', pick: 'Toronto Blue Jays ML', line: -122, units: 1, result: 'LOSS', final_score: 'Brewers 2, Blue Jays 1', notes: 'Cease dealt (6K, 0ER) but Brewers bullpen held on' },
-  { date: 'Apr 15', type: 'game_winner', game: 'COL @ HOU', pick: 'Houston Astros ML', line: -184, units: 1, result: 'WIN', final_score: 'Astros 3, Rockies 1', notes: 'Fade Rockies on road. Yordan Alvarez HR, 2 RBI.' },
-  { date: 'Apr 15', type: 'game_winner', game: 'WSH @ PIT', pick: 'Pittsburgh Pirates ML', line: -178, units: 1, result: 'WIN', final_score: 'Pirates 2, Nationals 0', notes: 'Pirates shut out the Nationals' },
-  // April 15 — Props
-  { date: 'Apr 15', type: 'prop', game: 'NYM @ LAD', pick: 'Ohtani OVER 6.5 K', line: -135, units: 1, result: 'WIN', notes: 'FREE PICK. Ohtani struck out 9 Mets.', is_free_pick: true },
-  { date: 'Apr 15', type: 'prop', game: 'TOR @ MIL', pick: 'Dylan Cease OVER 6.5 K', line: -116, units: 1, result: 'LOSS', notes: 'Cease had exactly 6 Ks in 6 IP. Just missed.' },
-  { date: 'Apr 15', type: 'prop', game: 'TOR @ MIL', pick: 'Dylan Cease UNDER 1.5 ER', line: 110, units: 1, result: 'WIN', notes: 'Cease allowed 0 ER in 6 IP. Plus money winner.' },
-  { date: 'Apr 15', type: 'prop', game: 'SEA @ SD', pick: 'Randy Vasquez UNDER 4.5 K', line: -131, units: 1, result: 'LOSS', notes: 'Vasquez exceeded 4.5 K line.' },
-  { date: 'Apr 15', type: 'prop', game: 'LAA @ NYY', pick: 'Game Total OVER 10.0', line: -123, units: 1, result: 'LOSS', notes: 'Final was 9 runs total. Just missed the over.' },
+  // April 19 — DAY 1 (Sim-Validated Card)
+  { date: 'Apr 19', type: 'game_winner', game: 'ATL @ PHI', pick: 'Atlanta Braves ML', line: 100, units: 3, result: 'PENDING', notes: 'FREE PICK. Sim: ATL 54% win vs 50% implied. Braves 14-7, best record in MLB. Holmes xERA 3.16. Rubber game Sunday Night Baseball.', is_free_pick: true },
+  { date: 'Apr 19', type: 'game_winner', game: 'LAD @ COL', pick: 'LA Dodgers ML', line: -205, units: 1, result: 'PENDING', notes: 'Sim: LAD 73.1% win vs 67.2% implied. Lorenzen 8.10 ERA.' },
+  { date: 'Apr 19', type: 'game_winner', game: 'KC @ NYY', pick: 'NY Yankees ML', line: -156, units: 1, result: 'PENDING', notes: 'Yankees close at home. Weathers vs Ragans.' },
+  { date: 'Apr 19', type: 'prop', game: 'LAD @ COL', pick: 'Roki Sasaki OVER 5.5 K', line: -115, units: 2, result: 'PENDING', notes: 'Sim: Sasaki avg 8.1 Ks. Rockies K rate bottom 5 in NL.' },
+  { date: 'Apr 19', type: 'prop', game: 'TEX @ SEA', pick: 'Bryan Woo OVER 5.5 K', line: -118, units: 2, result: 'PENDING', notes: 'Sim: Woo avg 7.9 Ks at T-Mobile Park.' },
+  { date: 'Apr 19', type: 'prop', game: 'DET @ BOS', pick: 'Garrett Crochet OVER 7.5 K', line: -110, units: 2, result: 'PENDING', notes: 'Sim: 73.8% hit rate in 10,000 simulations. Best prop on the board.' },
 ]
 
 function formatLine(line: number) {
@@ -82,7 +53,7 @@ export default function PicksPage() {
               <div>
                 <p className="text-sharp-muted text-xs uppercase tracking-wider mb-1">All Picks Since Launch</p>
                 <p className="text-4xl font-black text-sharp-green">{wins}-{losses}</p>
-                <p className="text-sharp-muted text-sm mt-1">Tracking from April 15, 2026 · Updated Apr 19{pending > 0 ? ` · ${pending} live today` : ''}</p>
+                <p className="text-sharp-muted text-sm mt-1">Tracking from April 19, 2026 · Day 1 — Sim Validated{pending > 0 ? ` · ${pending} live today` : ''}</p>
               </div>
               <div className="flex gap-6">
                 <div className="text-center">
@@ -94,7 +65,7 @@ export default function PicksPage() {
                   <p className="text-sharp-muted text-xs mt-1">Props</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-2xl font-black text-red-400">-7.3</p>
+                  <p className="text-2xl font-black text-white">0.0</p>
                   <p className="text-sharp-muted text-xs mt-1">Units Net</p>
                 </div>
               </div>

@@ -11,10 +11,10 @@ export default function TrackRecord() {
         {/* Season stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           {[
-            { label: 'Game Winners', value: '6-4', sub: 'Since launch Apr 15', color: 'text-sharp-green' },
-            { label: 'Props Record', value: '2-9', sub: 'Since launch Apr 15', color: 'text-sharp-green' },
-            { label: 'Units Net', value: '-7.3', sub: 'Updated Apr 19', color: 'text-red-400' },
-            { label: 'Free Pick', value: '1-3', sub: 'Ohtani ✅ · Burns ❌ · Glasnow ❌ · Bradley ❌ · ATL LIVE', color: 'text-sharp-green' },
+            { label: 'Game Winners', value: '0-0', sub: 'Day 1 — Apr 19, 2026', color: 'text-sharp-green' },
+            { label: 'Props Record', value: '0-0', sub: 'Day 1 — Apr 19, 2026', color: 'text-sharp-green' },
+            { label: 'Units Net', value: '0.0', sub: 'Sim-validated from Day 1', color: 'text-sharp-green' },
+            { label: 'Free Pick', value: '0-0', sub: 'ATL Braves ML LIVE today', color: 'text-sharp-green' },
           ].map((stat) => (
             <div key={stat.label} className="bg-sharp-card border border-sharp-border rounded-lg p-4 text-center">
               <p className={`text-3xl font-black mb-1 ${stat.color}`}>{stat.value}</p>

@@ -4,26 +4,22 @@ import Link from 'next/link'
 
 const weeklyRecord = [
   {
-    week: 'Apr 13–19, 2026',
-    gameWinners: { W: 6, L: 4 },
-    props: { W: 2, L: 9 },
-    unitsNet: -7.3,
+    week: 'Apr 19, 2026 — Day 1',
+    gameWinners: { W: 0, L: 0 },
+    props: { W: 0, L: 0 },
+    unitsNet: 0.0,
     freePicks: [
-      { pick: 'Ohtani OVER 6.5 K (-135)', result: 'WIN' as const, notes: '9 Ks — Apr 15' },
-      { pick: 'Chase Burns OVER 5.5 K (-140)', result: 'LOSS' as const, notes: '4 Ks — Apr 16' },
-      { pick: 'Tyler Glasnow OVER 7.5 K (-115)', result: 'LOSS' as const, notes: '7 Ks — Apr 17' },
-      { pick: 'Taj Bradley OVER 6.5 K (-120)', result: 'LOSS' as const, notes: '5 Ks — Apr 18' },
       { pick: 'Atlanta Braves ML (+100)', result: 'PENDING' as const, notes: 'Braves 14-7 · Apr 19 SNB' },
     ],
   },
 ]
 
 const lifetime = {
-  gameWinners: { W: 6, L: 4 },
-  props: { W: 2, L: 9 },
-  total: { W: 8, L: 13 },
-  unitsNet: -7.3,
-  trackingSince: 'April 15, 2026',
+  gameWinners: { W: 0, L: 0 },
+  props: { W: 0, L: 0 },
+  total: { W: 0, L: 0 },
+  unitsNet: 0.0,
+  trackingSince: 'April 19, 2026',
 }
 
 function formatUnits(u: number) {
@@ -48,10 +44,10 @@ export default function RecordPage() {
             {/* Lifetime Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
               {[
-                { label: 'Game Winners', value: `${lifetime.gameWinners.W}-${lifetime.gameWinners.L}`, sub: `${Math.round(lifetime.gameWinners.W / (lifetime.gameWinners.W + lifetime.gameWinners.L) * 100)}% win rate`, color: 'text-sharp-green' },
-                { label: 'Props', value: `${lifetime.props.W}-${lifetime.props.L}`, sub: `${Math.round(lifetime.props.W / (lifetime.props.W + lifetime.props.L) * 100)}% win rate`, color: 'text-sharp-green' },
-                { label: 'Units Net', value: formatUnits(lifetime.unitsNet), sub: 'Since launch', color: lifetime.unitsNet >= 0 ? 'text-sharp-green' : 'text-red-400' },
-                { label: 'Free Pick', value: '1-3', sub: 'Ohtani ✅ · Burns ❌ · Glasnow ❌ · Bradley ❌ · ATL LIVE', color: 'text-sharp-green' },
+                { label: 'Game Winners', value: `${lifetime.gameWinners.W}-${lifetime.gameWinners.L}`, sub: 'Sim-validated picks only', color: 'text-sharp-green' },
+                { label: 'Props', value: `${lifetime.props.W}-${lifetime.props.L}`, sub: 'Sim-validated picks only', color: 'text-sharp-green' },
+                { label: 'Units Net', value: formatUnits(lifetime.unitsNet), sub: 'Since Apr 19, 2026', color: lifetime.unitsNet >= 0 ? 'text-sharp-green' : 'text-red-400' },
+                { label: 'Free Pick', value: '0-0', sub: 'ATL Braves ML LIVE today', color: 'text-sharp-green' },
               ].map((stat) => (
                 <div key={stat.label} className="bg-sharp-card border border-sharp-border rounded-lg p-5 text-center">
                   <p className={`text-3xl font-black mb-1 ${stat.color}`}>{stat.value}</p>
