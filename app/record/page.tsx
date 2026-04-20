@@ -2,6 +2,8 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
 
+type PickResult = 'WIN' | 'LOSS' | 'PUSH' | 'PENDING'
+
 const weeklyRecord = [
   {
     week: 'Apr 19, 2026 — Day 1',
@@ -9,7 +11,7 @@ const weeklyRecord = [
     props: { W: 0, L: 0 },
     unitsNet: 0.0,
     freePicks: [
-      { pick: 'Atlanta Braves ML (+100)', result: 'PENDING' as const, notes: 'Braves 14-7 · Apr 19 SNB' },
+      { pick: 'Atlanta Braves ML (+100)', result: 'PENDING' as PickResult, notes: 'Braves 14-7 · Apr 19 SNB' },
     ],
   },
 ]
