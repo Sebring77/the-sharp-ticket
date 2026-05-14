@@ -2,130 +2,151 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
 
-type Pick = {
-  date: string
-  type: 'game_winner' | 'prop'
-  game: string
-  pick: string
-  line: number
-  units: number
-  result: 'WIN' | 'LOSS' | 'PUSH' | 'PENDING'
-  notes: string
-  is_free_pick?: boolean
-  final_score?: string
+// Today's free pick — updated daily
+const todayFreePick = {
+  pick: 'New York Yankees ML',
+  game: 'NYY @ BAL',
+  time: '1:05 PM ET',
+  line: '+115',
+  reasoning: 'Baltimore\'s pitching staff has been gutted across this series. NYY has the deeper roster top to bottom. At plus money, buy the depth advantage. The Sharp Army bets the roster, not the name on the jersey.',
+  episode: 23,
+  date: 'May 14, 2026',
 }
 
-const allPicks: Pick[] = [
-  // April 19 — DAY 1 (Sim-Validated Card)
-  { date: 'Apr 19', type: 'game_winner', game: 'ATL @ PHI', pick: 'Atlanta Braves ML', line: 100, units: 3, result: 'PENDING', notes: 'FREE PICK. Sim: ATL 54% win vs 50% implied. Braves 14-7, best record in MLB. Holmes xERA 3.16. Rubber game Sunday Night Baseball.', is_free_pick: true },
-  { date: 'Apr 19', type: 'game_winner', game: 'LAD @ COL', pick: 'LA Dodgers ML', line: -205, units: 1, result: 'PENDING', notes: 'Sim: LAD 73.1% win vs 67.2% implied. Lorenzen 8.10 ERA.' },
-  { date: 'Apr 19', type: 'game_winner', game: 'KC @ NYY', pick: 'NY Yankees ML', line: -156, units: 1, result: 'PENDING', notes: 'Yankees close at home. Weathers vs Ragans.' },
-  { date: 'Apr 19', type: 'prop', game: 'LAD @ COL', pick: 'Roki Sasaki OVER 5.5 K', line: -115, units: 2, result: 'PENDING', notes: 'Sim: Sasaki avg 8.1 Ks. Rockies K rate bottom 5 in NL.' },
-  { date: 'Apr 19', type: 'prop', game: 'TEX @ SEA', pick: 'Bryan Woo OVER 5.5 K', line: -118, units: 2, result: 'PENDING', notes: 'Sim: Woo avg 7.9 Ks at T-Mobile Park.' },
-  { date: 'Apr 19', type: 'prop', game: 'DET @ BOS', pick: 'Garrett Crochet OVER 7.5 K', line: -110, units: 2, result: 'PENDING', notes: 'Sim: 73.8% hit rate in 10,000 simulations. Best prop on the board.' },
+// Public record summary
+const record = {
+  total: { W: 49, L: 28 },
+  winPct: 63.6,
+  unitsNet: 6.15,
+  dollarNet: 615,
+  freePick: { W: 12, L: 0 },
+  freePickROI: 91,
+}
+
+// Recent picks preview (subscriber-only — shown blurred)
+const recentPicksPreview = [
+  { date: 'May 13', pick: 'LAD Dodgers ML', result: 'WIN', type: 'ML' },
+  { date: 'May 13', pick: 'COL Avalanche ML (OT comeback)', result: 'WIN', type: 'ML' },
+  { date: 'May 13', pick: 'CJ Abrams to get a hit', result: 'WIN', type: 'PROP' },
+  { date: 'May 13', pick: 'Julio Rodriguez to get a hit', result: 'WIN', type: 'PROP' },
+  { date: 'May 12', pick: 'VGK Golden Knights ML', result: 'WIN', type: 'ML' },
+  { date: 'May 12', pick: 'SAS Spurs -spread (won by 25)', result: 'WIN', type: 'ATS' },
 ]
 
-function formatLine(line: number) {
-  return line > 0 ? `+${line}` : `${line}`
-}
-
 export default function PicksPage() {
-  const wins = allPicks.filter(p => p.result === 'WIN').length
-  const losses = allPicks.filter(p => p.result === 'LOSS').length
-  const pending = allPicks.filter(p => p.result === 'PENDING').length
-
   return (
     <main className="min-h-screen bg-sharp-dark">
       <Header />
       <div className="pt-16">
         <section className="py-16 px-4">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-4xl mx-auto">
 
             {/* Header */}
             <div className="flex items-center gap-3 mb-10">
               <span className="h-px flex-1 bg-sharp-border" />
-              <span className="text-sharp-green text-xs font-bold tracking-[0.3em] uppercase">Full Picks History — Subscribers</span>
+              <span className="text-sharp-green text-xs font-bold tracking-[0.3em] uppercase">Today's Picks</span>
               <span className="h-px flex-1 bg-sharp-border" />
             </div>
 
-            {/* Summary bar */}
-            <div className="bg-sharp-card border border-sharp-border rounded-xl p-6 mb-8 flex flex-wrap gap-8 items-center justify-between">
+            {/* Season record bar */}
+            <div className="grid grid-cols-3 gap-3 mb-8">
+              <div className="bg-sharp-card border border-sharp-border rounded-lg p-4 text-center">
+                <p className="text-2xl font-black text-sharp-green">{record.total.W}-{record.total.L}</p>
+                <p className="text-sharp-muted text-xs mt-1">{record.winPct}% win rate</p>
+              </div>
+              <div className="bg-sharp-card border border-sharp-border rounded-lg p-4 text-center">
+                <p className="text-2xl font-black text-sharp-green">+{record.unitsNet}u</p>
+                <p className="text-sharp-muted text-xs mt-1">+${record.dollarNet} net</p>
+              </div>
+              <div className="bg-sharp-card border border-sharp-border rounded-lg p-4 text-center">
+                <p className="text-2xl font-black text-sharp-gold">{record.freePick.W}-{record.freePick.L}</p>
+                <p className="text-sharp-muted text-xs mt-1">Free pick record</p>
+              </div>
+            </div>
+
+            {/* FREE PICK — public */}
+            <div className="bg-sharp-green/5 border-2 border-sharp-green rounded-xl p-6 mb-8">
+              <div className="flex items-center gap-2 mb-4">
+                <span className="bg-sharp-green text-black text-xs font-black px-2 py-1 rounded">FREE PICK</span>
+                <span className="text-sharp-muted text-xs">Episode {todayFreePick.episode} · {todayFreePick.date}</span>
+              </div>
+              <div className="flex items-start justify-between gap-4 flex-wrap mb-4">
+                <div>
+                  <p className="text-white font-black text-2xl mb-1">{todayFreePick.pick}</p>
+                  <p className="text-sharp-muted text-sm">{todayFreePick.game} · {todayFreePick.time}</p>
+                </div>
+                <div className="text-right">
+                  <p className="text-sharp-gold font-black text-2xl">{todayFreePick.line}</p>
+                  <p className="text-sharp-muted text-xs">Line</p>
+                </div>
+              </div>
+              <p className="text-white/70 text-sm leading-relaxed border-t border-sharp-border/40 pt-4">
+                {todayFreePick.reasoning}
+              </p>
+            </div>
+
+            {/* Free pick streak */}
+            <div className="bg-sharp-card border border-sharp-border rounded-xl p-5 mb-8 flex items-center justify-between gap-4">
               <div>
-                <p className="text-sharp-muted text-xs uppercase tracking-wider mb-1">All Picks Since Launch</p>
-                <p className="text-4xl font-black text-sharp-green">{wins}-{losses}</p>
-                <p className="text-sharp-muted text-sm mt-1">Tracking from April 19, 2026 · Day 1 — Sim Validated{pending > 0 ? ` · ${pending} live today` : ''}</p>
+                <p className="text-white font-bold text-base">Free Pick: {record.freePick.W}-{record.freePick.L} all time · 100% win rate</p>
+                <p className="text-sharp-muted text-sm mt-1">+{record.freePickROI}% ROI since launch. Published daily. Free forever.</p>
               </div>
-              <div className="flex gap-6">
-                <div className="text-center">
-                  <p className="text-2xl font-black text-white">{allPicks.filter(p => p.type === 'game_winner' && p.result === 'WIN').length}-{allPicks.filter(p => p.type === 'game_winner' && p.result === 'LOSS').length}</p>
-                  <p className="text-sharp-muted text-xs mt-1">Game Winners</p>
-                </div>
-                <div className="text-center">
-                  <p className="text-2xl font-black text-white">{allPicks.filter(p => p.type === 'prop' && p.result === 'WIN').length}-{allPicks.filter(p => p.type === 'prop' && p.result === 'LOSS').length}</p>
-                  <p className="text-sharp-muted text-xs mt-1">Props</p>
-                </div>
-                <div className="text-center">
-                  <p className="text-2xl font-black text-white">0.0</p>
-                  <p className="text-sharp-muted text-xs mt-1">Units Net</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Subscriber gate notice */}
-            <div className="bg-sharp-green/5 border border-sharp-green/20 rounded-lg px-5 py-3 mb-8 flex items-center gap-3">
-              <span className="text-sharp-green text-sm">🔒</span>
-              <p className="text-sharp-muted text-sm">Full history is a subscriber benefit. Every pick, every result, every note — published before game time, logged after.</p>
-            </div>
-
-            {/* Picks table */}
-            <div className="space-y-2">
-              {/* Column headers */}
-              <div className="hidden md:grid grid-cols-[80px_140px_1fr_80px_60px_70px] gap-3 px-4 pb-2 border-b border-sharp-border">
-                <p className="text-sharp-muted text-xs uppercase tracking-wider">Date</p>
-                <p className="text-sharp-muted text-xs uppercase tracking-wider">Game</p>
-                <p className="text-sharp-muted text-xs uppercase tracking-wider">Pick</p>
-                <p className="text-sharp-muted text-xs uppercase tracking-wider">Line</p>
-                <p className="text-sharp-muted text-xs uppercase tracking-wider">Units</p>
-                <p className="text-sharp-muted text-xs uppercase tracking-wider">Result</p>
-              </div>
-
-              {allPicks.map((pick, i) => (
-                <div key={i} className={`bg-sharp-card border rounded-lg px-4 py-3 ${pick.result === 'WIN' ? 'border-sharp-green/20' : pick.result === 'LOSS' ? 'border-red-500/20' : pick.result === 'PENDING' ? 'border-sharp-gold/30' : 'border-sharp-border'}`}>
-                  <div className="md:grid grid-cols-[80px_140px_1fr_80px_60px_70px] gap-3 items-center">
-                    <p className="text-sharp-muted text-xs">{pick.date}</p>
-                    <div>
-                      <p className="text-sharp-muted text-xs">{pick.game}</p>
-                      {pick.final_score && <p className="text-white/40 text-xs mt-0.5">{pick.final_score}</p>}
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <p className="text-white font-semibold text-sm">{pick.pick}</p>
-                        {pick.is_free_pick && (
-                          <span className="text-xs bg-sharp-green/20 text-sharp-green px-1.5 py-0.5 rounded font-bold">FREE</span>
-                        )}
-                        <span className={`text-xs px-1.5 py-0.5 rounded ${pick.type === 'game_winner' ? 'bg-white/5 text-sharp-muted' : 'bg-sharp-gold/10 text-sharp-gold'}`}>
-                          {pick.type === 'game_winner' ? 'ML' : 'PROP'}
-                        </span>
-                      </div>
-                      <p className="text-sharp-muted text-xs mt-0.5">{pick.notes}</p>
-                    </div>
-                    <p className="text-sharp-gold font-bold text-sm">{formatLine(pick.line)}</p>
-                    <p className="text-white text-sm">{pick.units}u</p>
-                    <span className={`text-xs font-black px-2 py-1 rounded w-fit ${pick.result === 'WIN' ? 'bg-sharp-green/20 text-sharp-green' : pick.result === 'LOSS' ? 'bg-red-500/20 text-red-400' : pick.result === 'PENDING' ? 'bg-sharp-gold/20 text-sharp-gold' : 'bg-white/10 text-white/60'}`}>
-                      {pick.result === 'PENDING' ? 'LIVE' : pick.result}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Footer CTA */}
-            <div className="mt-10 text-center">
-              <p className="text-sharp-muted text-sm mb-4">New picks added every morning before games start.</p>
-              <Link href="/subscribe" className="inline-block bg-sharp-green text-black font-bold py-3 px-8 rounded-lg hover:bg-sharp-gold transition-colors text-sm">
-                Subscribe for Tomorrow's Full Card — $29/mo
+              <Link href="/record" className="text-sharp-green text-sm font-bold hover:text-sharp-gold transition-colors shrink-0">
+                Full Record →
               </Link>
             </div>
+
+            {/* SUBSCRIBER GATE */}
+            <div className="relative">
+
+              {/* Blurred preview of recent picks */}
+              <div className="space-y-2 mb-0 select-none pointer-events-none blur-sm opacity-60">
+                {recentPicksPreview.map((pick, i) => (
+                  <div key={i} className="bg-sharp-card border border-sharp-border rounded-lg px-4 py-3 flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <span className="text-sharp-muted text-xs w-14">{pick.date}</span>
+                      <span className={`text-xs px-1.5 py-0.5 rounded font-bold ${pick.type === 'ML' ? 'bg-sharp-green/10 text-sharp-green' : pick.type === 'PROP' ? 'bg-sharp-gold/10 text-sharp-gold' : 'bg-blue-500/10 text-blue-400'}`}>
+                        {pick.type}
+                      </span>
+                      <span className="text-white text-sm font-semibold">{pick.pick}</span>
+                    </div>
+                    <span className={`text-xs font-black px-2 py-1 rounded ${pick.result === 'WIN' ? 'bg-sharp-green/20 text-sharp-green' : 'bg-red-500/20 text-red-400'}`}>
+                      {pick.result}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Paywall overlay */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="bg-sharp-dark/95 border border-sharp-green/30 rounded-xl p-8 text-center max-w-sm mx-4 shadow-2xl">
+                  <div className="text-sharp-green text-3xl mb-3">🔒</div>
+                  <p className="text-white font-black text-xl mb-2">Full Card — Subscribers Only</p>
+                  <p className="text-white/60 text-sm mb-2">
+                    All ML picks · All ATS picks · All props · Full analysis
+                  </p>
+                  <p className="text-sharp-gold font-bold text-sm mb-6">
+                    Last 6 picks: 4W-2L · +$145
+                  </p>
+                  <Link
+                    href="/subscribe"
+                    className="block w-full bg-sharp-green text-black font-black py-3 px-6 rounded-lg hover:bg-sharp-gold transition-colors text-sm mb-3"
+                  >
+                    Subscribe — $29/mo
+                  </Link>
+                  <Link
+                    href="/subscribe"
+                    className="block text-sharp-muted text-xs hover:text-white transition-colors"
+                  >
+                    Or $249/yr — save $99
+                  </Link>
+                </div>
+              </div>
+
+            </div>
+
+            {/* spacer for the blurred content height */}
+            <div className="h-16" />
 
           </div>
         </section>
