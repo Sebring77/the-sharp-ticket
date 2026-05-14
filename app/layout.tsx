@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: 'The Sharp Ticket — Where Smart Money Talks',
   description: 'Daily picks across MLB, NBA, NHL, and NFL — sim-validated every morning. Game winners, props, and verified results. One free pick every day.',
   keywords: 'MLB picks, NBA picks, NHL picks, NFL picks, sports betting, daily picks, sharp money, betting analysis, proprietary edge engine, betting intelligence',
+  verification: {
+    google: 'l2MBsd_iWVvo7hfue5tz6Jh',
+  },
   openGraph: {
     title: 'The Sharp Ticket — Where Smart Money Talks',
     description: 'Daily picks across MLB, NBA, NHL, and NFL. Sim-validated. Free pick every day.',
