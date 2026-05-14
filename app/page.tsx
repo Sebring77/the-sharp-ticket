@@ -39,16 +39,17 @@ export default function Home() {
           </p>
 
           <p className="text-white/50 text-base md:text-lg max-w-lg mx-auto mb-12 leading-relaxed">
-            Daily picks powered by Monte Carlo simulation. MLB, NBA, NHL. Real edge. Real transparency. Launching soon.
+            Daily picks built on a proprietary multi-layer edge engine. MLB, NFL, NBA, NHL. Real edge. Real transparency. Launching soon.
           </p>
 
           {/* Email capture */}
           <EmailCapture />
 
           {/* Teaser stats */}
-          <div className="mt-16 grid grid-cols-3 gap-4 max-w-sm mx-auto">
+          <div className="mt-16 grid grid-cols-4 gap-4 max-w-sm mx-auto">
             {[
               { value: 'MLB', label: 'Baseball' },
+              { value: 'NFL', label: 'Football' },
               { value: 'NBA', label: 'Basketball' },
               { value: 'NHL', label: 'Hockey' },
             ].map((s) => (
