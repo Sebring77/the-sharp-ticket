@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
+// Using native img tag for SVG — Next.js Image optimization breaks embedded SVG content
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -12,13 +12,11 @@ export default function Header() {
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center">
-          <Image
-            src="/logo.svg"
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo_official.jpg"
             alt="The Sharp Ticket — Where Smart Money Talks"
-            height={44}
-            width={180}
             className="h-11 w-auto object-contain"
-            priority
           />
         </Link>
 
