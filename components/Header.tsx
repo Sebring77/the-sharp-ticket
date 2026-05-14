@@ -13,7 +13,7 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <Image
-            src="/logo_official.jpg"
+            src="/logo.svg"
             alt="The Sharp Ticket — Where Smart Money Talks"
             height={44}
             width={180}
