@@ -14,7 +14,7 @@ export default function Header() {
         <Link href="/" className="flex items-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/logo_official.jpg"
+            src="/logo_hawk.png"
             alt="The Sharp Ticket — Where Smart Money Talks"
             className="h-11 w-auto object-contain"
           />
