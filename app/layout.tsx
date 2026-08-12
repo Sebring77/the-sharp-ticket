@@ -1,24 +1,28 @@
 import type { Metadata } from 'next'
 import './globals.css'
 
+// COMING SOON (2026-08-12): metadata deliberately stripped of every service and performance
+// claim. The previous copy advertised "daily picks ... one free pick every day", which is what
+// search results and social previews would keep showing while the site is dark — i.e. marketing
+// a product that is not running. Restore the old copy only when the site actually relaunches.
 export const metadata: Metadata = {
-  title: 'The Sharp Ticket — Where Smart Money Talks',
-  description: 'Daily picks across MLB, NBA, NHL, and NFL — sim-validated every morning. Game winners, props, and verified results. One free pick every day.',
-  keywords: 'MLB picks, NBA picks, NHL picks, NFL picks, sports betting, daily picks, sharp money, betting analysis, proprietary edge engine, betting intelligence',
+  title: 'The Sharp Ticket — Coming Soon',
+  description: 'The Sharp Ticket is coming soon.',
+  robots: { index: false, follow: false },
   verification: {
     google: 'l2MBsd_iWVvo7hfue5tz6JhweJO8sjtGgfpmyaPs3qk',
   },
   openGraph: {
-    title: 'The Sharp Ticket — Where Smart Money Talks',
-    description: 'Daily picks across MLB, NBA, NHL, and NFL. Sim-validated. Free pick every day.',
+    title: 'The Sharp Ticket — Coming Soon',
+    description: 'The Sharp Ticket is coming soon.',
     url: 'https://thesharpticket.com',
     siteName: 'The Sharp Ticket',
     type: 'website',
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'The Sharp Ticket',
-    description: 'Where Smart Money Talks — Daily multi-sport picks and props.',
+    card: 'summary',
+    title: 'The Sharp Ticket — Coming Soon',
+    description: 'The Sharp Ticket is coming soon.',
   },
 }
 
